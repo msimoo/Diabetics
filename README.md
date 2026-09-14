@@ -185,7 +185,7 @@ clinic/
 **1️⃣ Clone the repository**
 
 ```bash
-git clone https://github.com/msimoo/Diabetics.git
+git clone https://github.com/msimoo/his-clinic-lab.git
 # → place it so the final path is:  C:\xampp\htdocs\clinic\
 ```
 
@@ -338,8 +338,8 @@ git push origin feature/amazing-feature
 
 💬 **Questions or feedback?** Don't hesitate to reach out!
 
-- 🐛 Found a bug? → [Open an issue](https://github.com/msimoo/Diabetics/issues)
-- 💡 Have an idea? → [Start a discussion](https://github.com/msimoo/Diabetics/pulls)
+- 🐛 Found a bug? → [Open an issue](https://github.com/msimoo/his-clinic-lab/issues)
+- 💡 Have an idea? → [Start a discussion](https://github.com/msimoo/his-clinic-lab/pulls)
 - 📬 Direct contact → [elsamaniomer@gmail.com](mailto:elsamaniomer@gmail.com)
 
 *Building healthcare technology that speaks Arabic first — and thinks with AI.* 🇸🇩
