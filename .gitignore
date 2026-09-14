@@ -1,0 +1,47 @@
+# ======================================
+# Clinic project — .gitignore
+# ======================================
+
+# --- Desktop shell / CEF runtime (browser, portable PHP, binaries) ---
+/php/
+/locales/
+/webcache/
+*.dll
+*.exe
+*.pak
+*.bin
+*.dat
+*.ico
+*.pma
+*.log
+resources.pak
+chrome_*.pak
+icudtl.dat
+vk_swiftshader_icd.json
+
+# --- Python ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# --- Generated outputs ---
+/output/
+flask_output.txt
+
+# --- Database dumps & security-sensitive scripts ---
+*.sql
+get_pass.php
+
+# --- Desktop packaging metadata ---
+settings.json
+install_ai.txt
+
+# --- User uploads (keep folder, ignore content) ---
+/www/uploads/*
+!/www/uploads/.gitkeep
+
+# --- OS / editor junk ---
+Thumbs.db
+.DS_Store

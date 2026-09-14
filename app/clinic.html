@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>استمارة مريض السكري - مركز سري للغدد الصماء والسكري</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0a7e6e;
+    --teal-light: #13a896;
+    --teal-pale: #e0f5f2;
+    --teal-mid: #c2ece7;
+    --gold: #c9a84c;
+    --gold-light: #f0d788;
+    --dark: #0d2b27;
+    --ink: #1a3d38;
+    --gray: #5a7370;
+    --light-gray: #f4faf9;
+    --white: #ffffff;
+    --border: #b8ddd9;
+    --red: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #e8f6f4 0%, #f0faf8 40%, #e4f4f0 100%);
+    min-height: 100vh;
+    color: var(--ink);
+    padding: 24px 16px;
+  }
+
+  .page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--teal) 60%, var(--teal-light) 100%);
+    border-radius: 20px 20px 0 0;
+    padding: 36px 40px 28px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(201,168,76,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -30px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .logo-circle {
+    width: 88px; height: 88px;
+    background: rgba(255,255,255,0.12);
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    position: relative; z-index: 1;
+  }
+  .logo-circle svg { width: 48px; height: 48px; }
+
+  .header-text { position: relative; z-index: 1; flex: 1; }
+
+  .center-name {
+    font-family: 'Cairo', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .center-name span { color: var(--gold-light); }
+
+  .center-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.82);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  .form-title-banner {
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 10px 24px;
+    letter-spacing: 1px;
+    border-radius: 0;
+  }
+
+  /* BODY */
+  .form-body {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 36px 40px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 12px 48px rgba(10,126,110,0.10);
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--white);
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    padding: 9px 20px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  .section-title .section-icon {
+    width: 22px; height: 22px;
+    background: rgba(255,255,255,0.22);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px 20px; }
+  .col-span-2 { grid-column: span 2; }
+  .col-span-3 { grid-column: span 3; }
+
+  /* FIELD */
+  .field { display: flex; flex-direction: column; gap: 5px; }
+
+  .field label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--teal);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .field label .req { color: var(--red); font-size: 0.9rem; }
+
+  .field input,
+  .field select,
+  .field textarea {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 13px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.93rem;
+    color: var(--ink);
+    background: var(--light-gray);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    width: 100%;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--teal-light);
+    box-shadow: 0 0 0 3px rgba(10,126,110,0.10);
+    background: #fff;
+  }
+  .field textarea { min-height: 72px; resize: vertical; }
+  .field select { appearance: none; cursor: pointer; }
+
+  /* RADIO / CHECKBOX GROUP */
+  .check-group, .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    margin-top: 4px;
+  }
+
+  .check-item, .radio-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--ink);
+    font-weight: 500;
+    user-select: none;
+  }
+
+  .check-item input[type="checkbox"],
+  .radio-item input[type="radio"] {
+    width: 17px; height: 17px;
+    accent-color: var(--teal);
+    cursor: pointer;
+  }
+
+  /* INLINE FIELDS */
+  .inline-row {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .inline-row .field { flex: 1; min-width: 120px; }
+
+  /* VITAL SIGNS TABLE */
+  .vitals-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .vitals-table thead tr {
+    background: var(--teal-pale);
+  }
+  .vitals-table th {
+    padding: 9px 14px;
+    color: var(--teal);
+    font-weight: 800;
+    text-align: center;
+    border-bottom: 2px solid var(--teal-mid);
+    font-family: 'Cairo', sans-serif;
+  }
+  .vitals-table td {
+    padding: 8px 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--teal-mid);
+  }
+  .vitals-table tr:last-child td { border-bottom: none; }
+  .vitals-table tbody tr:nth-child(even) { background: var(--teal-pale); }
+  .vitals-table td input {
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ink);
+    background: var(--white);
+    width: 100%;
+    outline: none;
+    text-align: center;
+  }
+  .vitals-table td input:focus {
+    border-color: var(--teal-light);
+    box-shadow: 0 0 0 2px rgba(10,126,110,0.10);
+  }
+
+  /* BLOOD SUGAR TABLE */
+  .sugar-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+    font-size: 0.88rem;
+  }
+  .sugar-table th {
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    color: #fff;
+    padding: 9px 10px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+  }
+  .sugar-table td {
+    padding: 7px 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--teal-mid);
+  }
+  .sugar-table tr:nth-child(even) td { background: var(--teal-pale); }
+  .sugar-table td input {
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.85rem;
+    width: 100%;
+    outline: none;
+    text-align: center;
+    background: var(--white);
+  }
+  .sugar-table td input:focus {
+    border-color: var(--teal-light);
+    box-shadow: 0 0 0 2px rgba(10,126,110,0.10);
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1.5px dashed var(--teal-mid);
+    margin: 8px 0 18px;
+  }
+
+  /* NOTE BOX */
+  .note-box {
+    background: var(--teal-pale);
+    border-right: 4px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    color: var(--gray);
+    margin-top: 12px;
+  }
+  .note-box strong { color: var(--teal); }
+
+  /* SIGNATURE ROW */
+  .sig-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .sig-box {
+    text-align: center;
+    padding: 20px 14px 10px;
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+  }
+  .sig-box .sig-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 36px;
+  }
+  .sig-box .sig-line {
+    border-top: 1.5px solid var(--teal-mid);
+    margin-top: 8px;
+    padding-top: 6px;
+    font-size: 0.78rem;
+    color: var(--gray);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: linear-gradient(90deg, var(--dark), var(--teal));
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: 0 0 20px 20px;
+    font-size: 0.82rem;
+    letter-spacing: 0.3px;
+    margin-top: 0;
+  }
+  .footer strong { color: var(--gold-light); }
+
+  /* PRINT BTN */
+  .print-btn {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0 8px;
+  }
+  .print-btn button {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    color: #fff;
+    border: none;
+    padding: 13px 48px;
+    border-radius: 50px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(10,126,110,0.30);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex; align-items: center; gap: 10px;
+    letter-spacing: 0.5px;
+  }
+  .print-btn button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(10,126,110,0.35);
+  }
+
+  /* PRINT STYLES */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .print-btn { display: none; }
+    .header { border-radius: 0; }
+    .form-body { box-shadow: none; border-radius: 0; }
+    .footer { border-radius: 0; }
+    .page-wrapper { max-width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .col-span-2, .col-span-3 { grid-column: span 1; }
+    .sig-row { grid-template-columns: 1fr; }
+    .header { flex-direction: column; text-align: center; padding: 24px 20px; }
+    .center-name { font-size: 1.4rem; }
+    .form-body { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-circle">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Medical cross -->
+        <rect x="20" y="8" width="8" height="32" rx="4" fill="#c9a84c"/>
+        <rect x="8" y="20" width="32" height="8" rx="4" fill="#c9a84c"/>
+        <!-- Small circles representing endocrine glands -->
+        <circle cx="24" cy="24" r="4" fill="rgba(255,255,255,0.6)"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <div class="center-name">مركز <span>سري</span> للغدد الصماء والسكري</div>
+      <div class="center-sub">Sari Endocrinology & Diabetes Center</div>
+    </div>
+  </div>
+
+  <div class="form-title-banner">
+    ✦ استمارة تقييم مريض السكري ✦
+  </div>
+
+  <div class="form-body">
+
+    <!-- 1. PATIENT INFO -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">👤</span>
+        أولاً: البيانات الشخصية
+      </div>
+      <div class="grid-3">
+        <div class="field col-span-2">
+          <label>الاسم الكامل <span class="req">*</span></label>
+          <input type="text" placeholder="الاسم الرباعي">
+        </div>
+        <div class="field">
+          <label>رقم الملف</label>
+          <input type="text" placeholder="XXXX-YYYY">
+        </div>
+
+        <div class="field">
+          <label>تاريخ الميلاد <span class="req">*</span></label>
+          <input type="date">
+        </div>
+        <div class="field">
+          <label>العمر</label>
+          <input type="text" placeholder="يُحسب تلقائياً">
+        </div>
+        <div class="field">
+          <label>الجنس <span class="req">*</span></label>
+          <select>
+            <option value="">-- اختر --</option>
+            <option>ذكر</option>
+            <option>أنثى</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>رقم الهاتف</label>
+          <input type="tel" placeholder="05XXXXXXXX">
+        </div>
+        <div class="field">
+          <label>رقم الهوية / الإقامة</label>
+          <input type="text" placeholder="10 أرقام">
+        </div>
+        <div class="field">
+          <label>الجنسية</label>
+          <input type="text" placeholder="">
+        </div>
+
+        <div class="field">
+          <label>الحالة الاجتماعية</label>
+          <select>
+            <option>-- اختر --</option>
+            <option>أعزب/عزباء</option>
+            <option>متزوج/ة</option>
+            <option>مطلق/ة</option>
+            <option>أرمل/ة</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>المهنة</label>
+          <input type="text" placeholder="">
+        </div>
+        <div class="field">
+          <label>تاريخ الزيارة <span class="req">*</span></label>
+          <input type="date">
+        </div>
+
+        <div class="field col-span-3">
+          <label>العنوان</label>
+          <input type="text" placeholder="المدينة، الحي، الشارع">
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. DIABETES HISTORY -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">🩺</span>
+        ثانياً: تاريخ مرض السكري
+      </div>
+      <div class="grid-3">
+        <div class="field">
+          <label>نوع السكري <span class="req">*</span></label>
+          <select>
+            <option>-- اختر --</option>
+            <option>النوع الأول (Type 1)</option>
+            <option>النوع الثاني (Type 2)</option>
+            <option>سكري الحمل (GDM)</option>
+            <option>MODY</option>
+            <option>غير محدد</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>سنة التشخيص</label>
+          <input type="number" placeholder="مثال: 2015" min="1950" max="2030">
+        </div>
+        <div class="field">
+          <label>مدة الإصابة (سنوات)</label>
+          <input type="number" placeholder="">
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="field" style="margin-bottom:12px;">
+        <label>طريقة التشخيص</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox"> أعراض كلاسيكية + فحص عشوائي</label>
+          <label class="check-item"><input type="checkbox"> صيام (FPG ≥ 126)</label>
+          <label class="check-item"><input type="checkbox"> HbA1c ≥ 6.5%</label>
+          <label class="check-item"><input type="checkbox"> تحمل الجلوكوز (OGTT)</label>
+          <label class="check-item"><input type="checkbox"> مصادفة أثناء فحص آخر</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>مرافق المريض / وليّ الأمر (إن وجد)</label>
+        <input type="text" placeholder="الاسم وصلة القرابة">
+      </div>
+    </div>
+
+    <!-- 3. VITAL SIGNS -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">💉</span>
+        ثالثاً: العلامات الحيوية والقياسات
+      </div>
+      <table class="vitals-table">
+        <thead>
+          <tr>
+            <th>القياس</th>
+            <th>القيمة</th>
+            <th>الوحدة</th>
+            <th>ملاحظات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>الوزن</td>
+            <td><input type="number" placeholder="00.0"></td>
+            <td>كغم</td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+          <tr>
+            <td>الطول</td>
+            <td><input type="number" placeholder="000"></td>
+            <td>سم</td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+          <tr>
+            <td>مؤشر كتلة الجسم (BMI)</td>
+            <td><input type="number" placeholder="00.0"></td>
+            <td>kg/m²</td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+          <tr>
+            <td>ضغط الدم</td>
+            <td><input type="text" placeholder="120/80"></td>
+            <td>mmHg</td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+          <tr>
+            <td>محيط الخصر</td>
+            <td><input type="number" placeholder="00"></td>
+            <td>سم</td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+          <tr>
+            <td>درجة الحرارة</td>
+            <td><input type="number" placeholder="37.0"></td>
+            <td>°م</td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. BLOOD SUGAR READINGS -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">🔬</span>
+        رابعاً: قراءات سكر الدم
+      </div>
+      <table class="sugar-table">
+        <thead>
+          <tr>
+            <th>نوع القراءة</th>
+            <th>القيمة (mg/dL)</th>
+            <th>التاريخ</th>
+            <th>المختبر / الجهاز</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>سكر الصيام (FPG)</td>
+            <td><input type="number" placeholder="---"></td>
+            <td><input type="date"></td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+          <tr>
+            <td>سكر ما بعد الأكل (PPG)</td>
+            <td><input type="number" placeholder="---"></td>
+            <td><input type="date"></td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+          <tr>
+            <td>HbA1c (%)</td>
+            <td><input type="number" placeholder="0.0" step="0.1"></td>
+            <td><input type="date"></td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+          <tr>
+            <td>سكر عشوائي</td>
+            <td><input type="number" placeholder="---"></td>
+            <td><input type="date"></td>
+            <td><input type="text" placeholder=""></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 5. TREATMENT -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">💊</span>
+        خامساً: العلاج الحالي
+      </div>
+
+      <div class="field" style="margin-bottom:14px;">
+        <label>نوع العلاج المستخدم</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox"> حمية غذائية فقط</label>
+          <label class="check-item"><input type="checkbox"> أدوية فموية (OADs)</label>
+          <label class="check-item"><input type="checkbox"> أنسولين</label>
+          <label class="check-item"><input type="checkbox"> أنسولين + أدوية فموية</label>
+          <label class="check-item"><input type="checkbox"> مضخة أنسولين (Pump)</label>
+          <label class="check-item"><input type="checkbox"> GLP-1 RA</label>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>الأدوية الفموية (الأسماء والجرعات)</label>
+          <textarea placeholder="مثال: Metformin 1000mg مرتين يومياً..."></textarea>
+        </div>
+        <div class="field">
+          <label>الأنسولين (النوع والجرعة)</label>
+          <textarea placeholder="مثال: Glargine 20u صباحاً، Aspart 8u مع كل وجبة..."></textarea>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:12px;">
+        <label>أدوية أخرى (ضغط، شحوم، قلب...)</label>
+        <textarea placeholder="اذكر جميع الأدوية المستخدمة..."></textarea>
+      </div>
+    </div>
+
+    <!-- 6. COMPLICATIONS -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">⚕️</span>
+        سادساً: مضاعفات السكري
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <p style="font-weight:800;color:var(--teal);font-size:0.9rem;margin-bottom:8px;">المضاعفات الوعائية الدقيقة</p>
+          <div class="check-group" style="flex-direction:column;">
+            <label class="check-item"><input type="checkbox"> اعتلال الشبكية (Retinopathy)</label>
+            <label class="check-item"><input type="checkbox"> اعتلال الكلى (Nephropathy)</label>
+            <label class="check-item"><input type="checkbox"> اعتلال الأعصاب (Neuropathy)</label>
+          </div>
+        </div>
+        <div>
+          <p style="font-weight:800;color:var(--teal);font-size:0.9rem;margin-bottom:8px;">المضاعفات الوعائية الكبيرة</p>
+          <div class="check-group" style="flex-direction:column;">
+            <label class="check-item"><input type="checkbox"> أمراض القلب التاجية</label>
+            <label class="check-item"><input type="checkbox"> الأوعية الدماغية (CVA/TIA)</label>
+            <label class="check-item"><input type="checkbox"> الأوعية الطرفية (PAD)</label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="grid-2" style="margin-top:8px;">
+        <div class="field">
+          <label>قدم السكري</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="foot" value="لا"> لا يوجد</label>
+            <label class="radio-item"><input type="radio" name="foot" value="نعم"> نعم</label>
+            <label class="radio-item"><input type="radio" name="foot" value="تاريخ"> تاريخ سابق</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>نوبات انخفاض السكر (Hypoglycemia)</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="hypo" value="لا"> لا</label>
+            <label class="radio-item"><input type="radio" name="hypo" value="نادرة"> نادرة</label>
+            <label class="radio-item"><input type="radio" name="hypo" value="متكررة"> متكررة</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:14px;">
+        <label>ملاحظات إضافية عن المضاعفات</label>
+        <textarea placeholder=""></textarea>
+      </div>
+    </div>
+
+    <!-- 7. FAMILY & LIFESTYLE -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">🏃</span>
+        سابعاً: التاريخ العائلي ونمط الحياة
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <p style="font-weight:800;color:var(--teal);font-size:0.9rem;margin-bottom:8px;">التاريخ العائلي لمرض السكري</p>
+          <div class="check-group" style="flex-direction:column;">
+            <label class="check-item"><input type="checkbox"> أب / أم</label>
+            <label class="check-item"><input type="checkbox"> أخ / أخت</label>
+            <label class="check-item"><input type="checkbox"> أجداد</label>
+            <label class="check-item"><input type="checkbox"> لا يوجد تاريخ عائلي</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field" style="margin-bottom:12px;">
+            <label>النشاط البدني</label>
+            <select>
+              <option>-- اختر --</option>
+              <option>لا يوجد</option>
+              <option>خفيف (أقل من 30 دقيقة/أسبوع)</option>
+              <option>معتدل (30-150 دقيقة/أسبوع)</option>
+              <option>منتظم (أكثر من 150 دقيقة/أسبوع)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>التدخين</label>
+            <div class="radio-group">
+              <label class="radio-item"><input type="radio" name="smoke"> لا</label>
+              <label class="radio-item"><input type="radio" name="smoke"> مدخن</label>
+              <label class="radio-item"><input type="radio" name="smoke"> سابق</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. LABS -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">🧪</span>
+        ثامناً: الفحوصات المخبرية الأخيرة
+      </div>
+      <table class="vitals-table">
+        <thead>
+          <tr>
+            <th>الفحص</th>
+            <th>القيمة</th>
+            <th>الوحدة</th>
+            <th>التاريخ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>الكوليسترول الكلي</td>
+            <td><input type="number" placeholder=""></td>
+            <td>mg/dL</td>
+            <td><input type="date"></td>
+          </tr>
+          <tr>
+            <td>LDL</td>
+            <td><input type="number" placeholder=""></td>
+            <td>mg/dL</td>
+            <td><input type="date"></td>
+          </tr>
+          <tr>
+            <td>HDL</td>
+            <td><input type="number" placeholder=""></td>
+            <td>mg/dL</td>
+            <td><input type="date"></td>
+          </tr>
+          <tr>
+            <td>الدهون الثلاثية (TG)</td>
+            <td><input type="number" placeholder=""></td>
+            <td>mg/dL</td>
+            <td><input type="date"></td>
+          </tr>
+          <tr>
+            <td>وظائف الكلى (Creatinine)</td>
+            <td><input type="number" placeholder="" step="0.01"></td>
+            <td>mg/dL</td>
+            <td><input type="date"></td>
+          </tr>
+          <tr>
+            <td>eGFR</td>
+            <td><input type="number" placeholder=""></td>
+            <td>mL/min/1.73m²</td>
+            <td><input type="date"></td>
+          </tr>
+          <tr>
+            <td>بروتين البول (Microalbumin)</td>
+            <td><input type="number" placeholder=""></td>
+            <td>mg/g Cr</td>
+            <td><input type="date"></td>
+          </tr>
+          <tr>
+            <td>وظائف الغدة الدرقية (TSH)</td>
+            <td><input type="number" placeholder="" step="0.01"></td>
+            <td>mIU/L</td>
+            <td><input type="date"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 9. DOCTOR NOTES -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-icon">📋</span>
+        تاسعاً: ملاحظات الطبيب والخطة العلاجية
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>التشخيص الحالي / ملاحظات الزيارة</label>
+          <textarea style="min-height:90px;" placeholder=""></textarea>
+        </div>
+        <div class="field">
+          <label>الخطة العلاجية والتوصيات</label>
+          <textarea style="min-height:90px;" placeholder=""></textarea>
+        </div>
+      </div>
+      <div class="field" style="margin-top:12px;">
+        <label>تاريخ المراجعة القادمة</label>
+        <input type="date" style="max-width:220px;">
+      </div>
+
+      <div class="note-box">
+        <strong>تنبيه:</strong> يُرجى التوقيع على إقرار الموافقة المستنيرة قبل البدء بأي إجراء علاجي جديد.
+      </div>
+    </div>
+
+    <!-- SIGNATURES -->
+    <hr class="divider">
+    <div class="sig-row">
+      <div class="sig-box">
+        <div class="sig-label">توقيع المريض / ولي الأمر</div>
+        <div class="sig-line">الاسم والتوقيع</div>
+      </div>
+      <div class="sig-box">
+        <div class="sig-label">توقيع الطبيب المعالج</div>
+        <div class="sig-line">الاسم والرقم المهني</div>
+      </div>
+      <div class="sig-box">
+        <div class="sig-label">توقيع الممرض/ة</div>
+        <div class="sig-line">الاسم والتوقيع</div>
+      </div>
+    </div>
+
+  </div><!-- /form-body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>مركز سري للغدد الصماء والسكري</strong> &nbsp;|&nbsp; جميع المعلومات سرية وخاضعة للوائح الخصوصية &nbsp;|&nbsp; Sari Endocrinology & Diabetes Center
+  </div>
+
+  <!-- PRINT BUTTON -->
+  <div class="print-btn">
+    <button onclick="window.print()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      طباعة الاستمارة
+    </button>
+  </div>
+
+</div>
+</body>
+</html>
