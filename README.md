@@ -1,12 +1,12 @@
 <div align="center">
 
-# 🩺 Diabetes Clinic Management System
+# 🏥 HIS — Clinic & Laboratory Management System
 
-### نظام إدارة عيادة السكري
+### نظام إدارة عيادة ومختبر السكري والغدد الصماء
 
-**A modern, bilingual (Arabic / RTL-first) clinic management platform with an AI-powered
-prediction engine for diabetic wound healing & patient risk — built with PHP, MySQL,
-Flask & Machine Learning.**
+**A complete Hospital Information System for an Endocrinology & Diabetes Center —
+patients, visits, laboratory (LIS), pharmacy, AI clinical decision support, and
+24+ analytics modules. Bilingual Arabic/RTL · PHP · MySQL · Flask · Machine Learning.**
 
 [![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
@@ -14,81 +14,117 @@ Flask & Machine Learning.**
 [![Flask](https://img.shields.io/badge/Flask-3.x-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3%2B-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![XGBoost](https://img.shields.io/badge/XGBoost-2.x-white?style=for-the-badge)](https://xgboost.ai/)
+[![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
 
-[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20XAMPP-0078D6?style=flat-square)](#-getting-started)
-[![Database](https://img.shields.io/badge/DB-clinic__diabetes-003B57?style=flat-square)](#-getting-started)
+[![Modules](https://img.shields.io/badge/HIS%20Modules-13-38bdf8?style=flat-square)](#-modules)
+[![Analytics](https://img.shields.io/badge/Analytics-24%20views-8b5cf6?style=flat-square)](#-modules)
 [![AI Service](https://img.shields.io/badge/AI%20Service-localhost%3A5000-9B4993?style=flat-square)](#-ai-api-reference)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](#-contributing)
-
----
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](#-license)
 
 **Quick Links** —
-[✨ Features](#-features) ·
-[🏗️ Architecture](#-architecture) ·
+[✨ Modules](#-modules) ·
+[🧪 Laboratory (LIS)](#-laboratory-lis) ·
+[🏗️ Architecture](#️-architecture) ·
 [🚀 Getting Started](#-getting-started) ·
-[🔌 API Reference](#-ai-api-reference) ·
-[🧠 AI Engine](#-ai-engine) ·
+[🔌 AI API](#-ai-api-reference) ·
 [👨‍💻 Developer](#-developer)
 
 </div>
 
 ---
 
-## 📸 Preview
+## 🌟 Overview
 
-> 🖼️ *Screenshots coming soon — star ⭐ the repo to get notified!*
+**HIS Clinic Lab** is a production-grade **Hospital Information System** built for
+**مركز سري للغدد الصماء والسكري** (Sirri Center for Endocrinology & Diabetes) —
+covering the full patient journey in one platform:
 
-| 🌞 Light Mode | 🌙 Dark Mode |
-| :---: | :---: |
-| *Dashboard screenshot placeholder* | *Dark theme screenshot placeholder* |
+```text
+📝 Register → 🩺 Visit & Diagnose → 🧪 Order Lab Tests → 🔬 Enter Results
+→ 💊 Prescribe → 🤖 AI Risk & Healing Predictions → 📊 Analyze & Report
+```
+
+Everything is **Arabic-first (RTL)** with English labels throughout, fully
+utf8mb4-backed, and works with or without the AI service online.
 
 ---
 
-## ✨ Features
+## 📦 Modules
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 👥 Patient Care
-- 📋 **Full patient profiles** — demographics, files, photos & medical history
-- 🩺 **Visit management** — vitals, blood sugar, labs, complications, treatments
-- 🦶 **Foot exams** with an interactive **foot canvas** annotation tool
-- 💊 **Medications & lab test orders** tracking
+### 🧭 Core Clinical
+- 📊 **Dashboard** — live KPIs, appointments & alerts
+- 👥 **Patients** — registration, files, photos, timeline, delete
+- 🩺 **Visits** — intake, vitals, blood sugar, chief complaint, treatment plan
+- 📅 **Appointments** — booking & scheduling
 
 </td>
 <td width="50%" valign="top">
 
-### 🤖 Artificial Intelligence
-- ⚠️ **Risk prediction** — ensemble ML models flag high-risk patients
-- 🩹 **Wound healing estimation** — predicted healing duration
-- 💡 **Auto-generated treatment & nutrition recommendations**
-- 📖 **Explainable AI** — understand what drives every prediction
+### 🔬 Laboratory (LIS)
+- 🧾 **Test catalog** — categories, units, normal ranges
+- 📤 **Ordering** — order tests per patient/visit
+- 📥 **Results entry** — cholesterol, HbA1c, LDL & more
+- ⚙️ Full admin over test types & categories
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### 📊 Analytics & Reporting
-- 📈 **20+ analytics modules** — trends, cohorts, quality measures, doctor performance
-- 🗺️ Geographic & visit-pattern insights
-- 🧾 **PDF reports** — patient, monthly & full clinic reports
-- 🔔 Smart risk alerts & notification center
+### 💊 Treatment & Pharmacy
+- 🧴 **Medications** module — prescriptions & tracking
+- 💉 **Lab results** tied into the visit workflow
+- 🦶 **Foot exams** with interactive canvas annotation
+- 🩹 **Care plans** & follow-up outcomes
 
 </td>
 <td width="50%" valign="top">
 
-### 🛡️ Platform & UX
-- 🌍 **Bilingual Arabic/English** — RTL-first design
-- 🌙 **Dark mode** toggle
-- 🔐 Role-based access (`super_admin`, `admin`, `doctor`, `medical_assistant`, `nurse`)
-- 💾 Automated DB backups & email report cron jobs
-- 📚 Patient education library with file uploads
+### 🤖 Intelligence & Automation
+- 🔮 **AI predictions** — complication risk & wound healing
+- 📋 **Auto-instructions** — rule-based patient instructions
+- 📚 **Education library** — Arabic patient handouts & uploads
+- ⚠️ **Risk alerts** — proactive patient flagging
 
 </td>
 </tr>
 </table>
+
+### 📈 Analytics Suite (24 modules)
+
+```text
+Analytics Hub · Wound Analysis · Diabetic Analytics · Smart Dashboard
+Quality Measures · Risk Prediction · Risk Alerts · Anomaly Detection
+Specialist Analytics · Statistics · Progress Tracking · Visit Patterns
+Clinic Flow · Cohort Analysis · Medication Adherence · Treatment Efficacy
+Doctor Performance · Diabetic Trends · Patient Timeline · Geographic Health
+Similar Patients · What-If Simulator · Report Builder · Cohort Builder
+```
+
+---
+
+## 🧪 Laboratory (LIS)
+
+The built-in laboratory module manages the complete testing workflow:
+
+```mermaid
+flowchart LR
+    D["👨‍⚕️ Doctor<br/>orders tests"] --> O["📤 Lab Order<br/>patient + visit linked"]
+    O --> T[("🧾 Test Catalog<br/>units · normal ranges")]
+    O --> R["📥 Results Entry<br/>values vs. normal range"]
+    R --> F["🚩 Flag abnormal<br/>→ visit record"]
+    F --> A["📊 Analytics<br/>trends & adherence"]
+```
+
+- 🗂️ **Test types** with `name_ar` / `name_en`, abbreviation, **unit**, and
+  **normal min/max** ranges (plus free-text ranges) — full admin CRUD
+- 🗂️ **Categories** to group tests (chemistry, hematology, lipids…)
+- 🔗 Orders are linked to both **patient** and **visit**
+- 🚩 Results are stored per-visit and evaluated against normal ranges
 
 ---
 
@@ -96,18 +132,18 @@ Flask & Machine Learning.**
 
 ```mermaid
 flowchart LR
-    U["👨‍⚕️ Doctor / Staff<br/>Browser"] -->|"HTTP"| PHP
+    U["👨‍⚕️ Staff<br/>Browser"] -->|"HTTP"| PHP
 
-    subgraph PHP["🐘 PHP Web App · /clinic/www"]
-        M["Modules<br/>patients · visits · analytics<br/>assessments · reports …"]
+    subgraph PHP["🐘 PHP Web App · www/"]
+        M["13 Modules<br/>patients · visits · lab_tests<br/>medications · analytics …"]
     end
 
-    M -->|"MySQLi"| DB[("🗄️ MySQL<br/>clinic_diabetes")]
+    M -->|"MySQLi · prepared statements"| DB[("🗄️ MySQL · clinic_diabetes<br/>utf8mb4 · 30+ tables")]
     M -->|"REST · JSON"| AI
 
     subgraph AI["🐍 Flask AI Service · :5000"]
         E["🧠 Ensemble Model"]
-        EP["Endpoints<br/>predict · recommend · explain"]
+        EP["predict · recommend · explain"]
         E --> EP
     end
 
@@ -116,7 +152,6 @@ flowchart LR
     end
 
     TR -.->|".pkl models"| E
-    DP -.->|"training data"| TR
 ```
 
 ---
@@ -125,11 +160,11 @@ flowchart LR
 
 | Layer | Technologies |
 | :--- | :--- |
-| 🎨 **Frontend** | HTML5, CSS3 (custom, RTL), Vanilla JS, Chart.js, Canvas API |
-| 🐘 **Backend** | PHP 8+, prepared statements, session-based auth, CSRF tokens |
-| 🗄️ **Database** | MySQL / MariaDB (`utf8mb4` — full Arabic support) |
+| 🎨 **Frontend** | HTML5, CSS3 (RTL-first), Vanilla JS, Chart.js, Canvas API |
+| 🐘 **Backend** | PHP 8+, prepared statements, session auth, CSRF tokens, RBAC |
+| 🗄️ **Database** | MySQL / MariaDB (`clinic_diabetes`, utf8mb4, 30+ tables) |
 | 🐍 **AI Service** | Python 3.10+, Flask, Flask-CORS |
-| 🤖 **Machine Learning** | scikit-learn (Random Forest, GBM, calibrated), XGBoost, LightGBM, joblib |
+| 🤖 **Machine Learning** | scikit-learn (RF, GBM, calibrated ensembles), XGBoost, LightGBM, joblib |
 | 🔄 **Data Pipeline** | pandas, SQLAlchemy, PyMySQL |
 | 🖥️ **Runtime** | XAMPP (Apache + PHP + MySQL), Windows batch launchers |
 
@@ -141,27 +176,28 @@ flowchart LR
 clinic/
 ├── 📁 www/                      # 🐘 PHP web application (docroot)
 │   ├── api/                     #    Internal JSON endpoints
-│   ├── assets/                  #    CSS, JS, Chart.js, foot-canvas
+│   ├── assets/                  #    CSS (RTL, dark mode), JS, Chart.js
 │   ├── config/                  #    DB, session, helpers, constants
 │   ├── cron/                    #    ⏰ auto_backup, send_reports
 │   ├── includes/                #    header, sidebar, auth, AI client
-│   ├── modules/                 #    Feature modules (13 domains)
-│   │   ├── ai/                  #      🤖 AI dashboard & analysis
-│   │   ├── analytics/           #      📈 20+ analytics views
-│   │   ├── assessments/         #      🦶 foot exams, care plans
-│   │   ├── patients/ visits/    #      👥 core clinical modules
-│   │   └── …                    #      labs, meds, education, users
-│   ├── uploads/                 #    📷 patient photos & files (gitignored)
-│   ├── install.php              #    ⚙️ One-click DB installer
-│   └── index.php                #    Entry point
+│   ├── modules/                 #    13 HIS modules
+│   │   ├── lab_tests/           #      🧪 LIS: catalog & ordering
+│   │   ├── medications/         #      💊 prescriptions
+│   │   ├── patients/ visits/    #      👥 core clinical
+│   │   ├── analytics/           #      📈 24 analytics views
+│   │   ├── auto_instructions/   #      📋 rule-based instructions
+│   │   └── …                    #      assessments, education, users
+│   ├── uploads/                 #    📷 patient files (gitignored)
+│   ├── install.php              #    ⚙️ one-click DB installer
+│   └── database_upgrade_v2.php  #    🔧 schema migrations (LIS & more)
 ├── 📁 ai_api/                   # 🐍 Flask AI microservice
 │   ├── app.py                   #    REST endpoints (:5000)
-│   ├── models/                  #    Trained .pkl models
+│   ├── models/                  #    trained .pkl models
 │   └── requirements.txt
 ├── 📁 ai_engine/                # 🧠 ML core — predictors & trainer
-├── 📁 data_pipeline/            # 🔄 Extract → clean → transform
-├── 🚀 start_ai.bat              # Start AI service (one click)
-├── 🚀 train_and_start_ai.bat    # Train models + start (one click)
+├── 📁 data_pipeline/            # 🔄 extract → clean → transform
+├── 🚀 start_ai.bat              # start AI service (one click)
+├── 🚀 train_and_start_ai.bat    # train models + start (one click)
 └── 📄 generate_synthetic_data.py
 ```
 
@@ -173,12 +209,12 @@ clinic/
 
 | Requirement | Version | Notes |
 | :--- | :--- | :--- |
-| 🟠 [XAMPP](https://www.apachefriends.org/) | any recent | Provides Apache, PHP 8+ & MySQL |
-| 🐍 [Python](https://www.python.org/downloads/) | 3.10+ | Only needed for the AI features |
+| 🟠 [XAMPP](https://www.apachefriends.org/) | any recent | Apache, PHP 8+ & MySQL |
+| 🐍 [Python](https://www.python.org/downloads/) | 3.10+ | only for AI features |
 | 🌐 Browser | any | Chrome / Edge / Firefox |
 
-> 💡 **No AI? No problem.** The web app runs fully standalone — AI predictions
-> gracefully fall back to rule-based logic when the Python service is offline.
+> 💡 **The web app runs standalone** — AI predictions gracefully fall back to
+> rule-based logic when the Python service is offline.
 
 ### 🛠️ Installation
 
@@ -189,18 +225,21 @@ git clone https://github.com/msimoo/his-clinic-lab.git
 # → place it so the final path is:  C:\xampp\htdocs\clinic\
 ```
 
-**2️⃣ Start services** — open the **XAMPP Control Panel** and start **Apache** 🟢 and **MySQL** 🟢.
+**2️⃣ Start services** — open the **XAMPP Control Panel**, start **Apache** 🟢 and **MySQL** 🟢.
 
-**3️⃣ Run the database installer** — open in your browser:
+**3️⃣ Run the installer** — creates database `clinic_diabetes`, all tables & a default admin:
 
 ```text
 http://localhost/clinic/www/install.php
 ```
 
-✅ This creates the `clinic_diabetes` database (UTF-8MB4), all tables, and a default admin.
-⚠️ **Delete or secure `install.php` after installation!**
+**4️⃣ Upgrade the schema** — adds the Laboratory module and v2 features:
 
-**4️⃣ Log in** to the system:
+```text
+http://localhost/clinic/www/database_upgrade_v2.php
+```
+
+**5️⃣ Log in**
 
 ```text
 http://localhost/clinic/www/
@@ -210,7 +249,8 @@ http://localhost/clinic/www/
 | :---: | :---: |
 | `admin` | `admin123` |
 
-> 🚨 **Change the default password immediately** (Profile → Change Password).
+> 🚨 **Change the default password immediately** (Profile → Change Password) and
+> delete/secure `install.php` & `database_upgrade_v2.php` after setup.
 
 ### 🤖 Optional — AI Prediction Service
 
@@ -245,10 +285,10 @@ python ai_api/app.py
 
 ### ⏰ Scheduled Jobs (optional)
 
-| Script | Purpose | Suggested schedule |
+| Script | Purpose | Schedule |
 | :--- | :--- | :--- |
-| `www/cron/auto_backup.php` | 💾 Automatic database backups | daily |
-| `www/cron/send_reports.php` | 📧 Email scheduled reports | weekly |
+| `www/cron/auto_backup.php` | 💾 automatic database backups | daily |
+| `www/cron/send_reports.php` | 📧 email scheduled reports | weekly |
 
 ---
 
@@ -258,61 +298,56 @@ Base URL: `http://127.0.0.1:5000` · Content type: `application/json`
 
 | Method | Endpoint | Description |
 | :---: | :--- | :--- |
-| `GET` | `/api/health` | 💚 Service health & model load status |
-| `POST` | `/api/predict/risk` | ⚠️ Patient complication risk score |
-| `POST` | `/api/predict/healing` | 🩹 Estimated wound healing duration |
-| `POST` | `/api/recommend` | 💡 Treatment & nutrition recommendations |
-| `POST` | `/api/analyze` | 🔍 Full clinical analysis |
-| `POST` | `/api/explain` | 📖 Explanation of prediction factors |
+| `GET` | `/api/health` | 💚 service health & model load status |
+| `POST` | `/api/predict/risk` | ⚠️ patient complication risk score |
+| `POST` | `/api/predict/healing` | 🩹 estimated wound healing duration |
+| `POST` | `/api/recommend` | 💡 treatment & nutrition recommendations |
+| `POST` | `/api/analyze` | 🔍 full clinical analysis |
+| `POST` | `/api/explain` | 📖 explanation of prediction factors |
 
 ```bash
-# Example — check service health
 curl http://127.0.0.1:5000/api/health
 ```
 
-> 🧠 If model files are missing, endpoints respond using **rule-based fallbacks**
-> instead of failing — safe for demos and development.
+> 🧠 Missing model files? Endpoints respond with **rule-based fallbacks** instead of failing.
 
 ---
 
-## 🧠 AI Engine
+## 🔐 Roles & Access
 
-| Model family | Algorithms | Purpose |
-| :--- | :--- | :--- |
-| ⚠️ **Risk predictor** | Random Forest · XGBoost · LightGBM → calibrated ensemble | Flags patients at high risk of complications |
-| 🩹 **Healing estimator** | Random Forest · GBM · LightGBM ensemble | Predicts wound healing duration |
-
-**Pipeline:** `MySQL → data_pipeline (extract · clean · transform) → ai_engine.trainer → .pkl models → Flask ensemble API → PHP dashboard`
+| Role | Capabilities |
+| :--- | :--- |
+| 🛡️ `super_admin` | Full system control, user management, settings |
+| 👑 `admin` | Clinic administration, reports, lookups |
+| 👨‍⚕️ `doctor` | Clinical workflow, lab ordering, prescriptions |
+| 🩺 `medical_assistant` | Visits support, lab ordering |
+| 💉 `nurse` | Patient care & vitals |
 
 ---
 
 ## 🗺️ Roadmap
 
-- [x] 🏥 Core clinical modules (patients, visits, assessments)
+- [x] 🏥 Core clinical modules (patients, visits, appointments)
+- [x] 🧪 Laboratory module — catalog, ordering, results (LIS)
 - [x] 🤖 ML risk & healing prediction with ensemble models
-- [x] 📊 Analytics suite & PDF reporting
+- [x] 📊 24-view analytics suite & PDF reporting
 - [x] 🌙 Dark mode & bilingual RTL UI
+- [ ] 🔬 Lab analyzer / LIS device integration (HL7, ASTM)
 - [ ] 📱 Mobile-responsive PWA
 - [ ] 🌐 Full English UI parity
-- [ ] 🔬 Model monitoring & retraining dashboard
 - [ ] ☁️ Docker deployment (`docker-compose`)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are what make open source amazing! 💙
+Contributions are welcome! 💙
 
 ```bash
-# 1 · Fork the repo
-# 2 · Create your feature branch
 git checkout -b feature/amazing-feature
-
-# 3 · Commit your changes
 git commit -m "✨ Add amazing feature"
-
-# 4 · Push and open a Pull Request 🎉
 git push origin feature/amazing-feature
+# → open a Pull Request 🎉
 ```
 
 ---
@@ -330,7 +365,10 @@ git push origin feature/amazing-feature
 ### **Mohammed Omer**
 *Creator & Lead Developer*
 
+**Senior Software Developer** · Aliaa Specialist Hospital 🏥
+
 [![GitHub](https://img.shields.io/badge/GitHub-%40msimoo-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/msimoo)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mohammedomerma)
 [![Email](https://img.shields.io/badge/Email-elsamaniomer%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:elsamaniomer@gmail.com)
 
 </td>
@@ -339,7 +377,7 @@ git push origin feature/amazing-feature
 💬 **Questions or feedback?** Don't hesitate to reach out!
 
 - 🐛 Found a bug? → [Open an issue](https://github.com/msimoo/his-clinic-lab/issues)
-- 💡 Have an idea? → [Start a discussion](https://github.com/msimoo/his-clinic-lab/pulls)
+- 💡 Have an idea? → [Open a PR](https://github.com/msimoo/his-clinic-lab/pulls)
 - 📬 Direct contact → [elsamaniomer@gmail.com](mailto:elsamaniomer@gmail.com)
 
 *Building healthcare technology that speaks Arabic first — and thinks with AI.* 🇸🇩
@@ -352,11 +390,17 @@ git push origin feature/amazing-feature
 
 ---
 
+## 📄 License
+
+Released under the [MIT License](LICENSE) — free to use, modify & build upon with attribution.
+
+---
+
 <div align="center">
 
 **⭐ Found this project useful? Give it a star on GitHub!** ⭐
 
-<sub>Built with ❤️ and ☕ by **Mohammed Omer** · © 2026 Diabetes Clinic Management System</sub>
+<sub>Built with ❤️ and ☕ by **Mohammed Omer** · © 2026 HIS Clinic & Laboratory Management System</sub>
 
 <sub>🩺 *Disclaimer: for clinical decision support only — not a substitute for professional medical judgment.*</sub>
 
